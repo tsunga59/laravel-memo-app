@@ -36,7 +36,7 @@
             <button type="submit">ログインする</button>
             <div class="account">
                 <p>アカウントをお持ちでない方</p>
-                <a href="{{ route('register') }}">アカウントを作成する</a>
+                <a href="{{ route('register.index') }}">アカウントを作成する</a>
             </div>
         </form>
     </div>

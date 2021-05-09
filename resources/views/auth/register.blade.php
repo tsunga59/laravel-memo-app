@@ -44,7 +44,7 @@
             <button type="submit">登録する</button>
             <div class="account">
                 <p>既にアカウントをお持ちの方</p>
-                <a href="{{ route('login') }}">ログイン画面へ</a>
+                <a href="{{ route('login.index') }}">ログイン画面へ</a>
             </div>
         </form>
     </div>

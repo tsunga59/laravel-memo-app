@@ -1,4 +1,4 @@
-/* memo *//* ============================================ */.memo {
+/* 色コード *//* ============================================ *//* memo *//* ============================================ */.memo {
   display: flex;
   min-width: 1000px;
   padding: 0;
@@ -19,13 +19,13 @@
   font-size: 1.8rem;
 }
 .memo_left .top_area .fa-sign-out-alt {
-  color: ;
-  background-color: ;
+  color: #fff;
+  background-color: #333;
   margin-right: 5px;
 }
 .memo_left .top_area .fa-plus {
-  color: ;
-  background-color: ;
+  color: #fff;
+  background-color: #3b70d1;
 }
 .memo_left .memo_list a {
   display: block;
@@ -64,13 +64,13 @@
   font-size: 1.8rem;
 }
 .memo_right .top_area .fa-pen {
-  color: ;
-  background-color: ;
+  color: #fff;
+  background-color: #3b70d1;
   margin-right: 5px;
 }
 .memo_right .top_area .fa-trash {
-  color: ;
-  background-color: ;
+  color: #fff;
+  background-color: #ec401a;
 }
 .memo_right .content_area {
   padding: 0 20px;
