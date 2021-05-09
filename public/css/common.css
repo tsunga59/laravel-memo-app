@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* 基本設定 *//* ============================================ *//* 色コード *//* ============================================ *//* 共通設定 *//* ============================================ */html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Noto Sans JP', "游ゴシック体", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+section {
+  width: 100%;
+  height: 100%;
+  padding: 60px 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+.fa, .fas {
+  padding: 8px;
+  border-radius: 3px;
+}
+a, button {
+  transition: all 0.3s ease;
+}
+a:hover, button:hover {
+  opacity: 0.7;
+}
+/* ユーザー登録・ログインフォーム *//* ============================================ */.register, .login {
+  height: 100vh;
+}
+.register .container, .login .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register form, .login form {
+  width: 60%;
+  background-color: #f7f7f7;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.register form .error_area, .login form .error_area {
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border: 1px solid #ec401a;
+  border-radius: 3px;
+}
+.register form .error_area p, .login form .error_area p {
+  color: #ec401a;
+}
+.register form table, .login form table {
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 30px;
+}
+.register form table tr, .login form table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.register form table th, .login form table th {
+  width: 25%;
+  padding: 15px 0;
+}
+.register form table td, .login form table td {
+  width: 70%;
+  padding: 15px 0;
+}
+.register form table td input, .login form table td input {
+  width: 100%;
+  background-color: #fff;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px #333;
+  border-radius: 3px;
+}
+.register form button, .login form button {
+  display: block;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+.register .account, .login .account {
+  margin-top: 40px;
+  text-align: center;
+}
+.register .account a, .login .account a {
+  display: inline-block;
+  color: #3b70d1;
+  padding: 5px 0;
+}
