@@ -4,24 +4,22 @@
 
 <section class="login">
     <div class="container">
-        <form action="{{ route('memo.index') }}" method="">
+        <form action="{{ route('login.exec') }}" method="post">
             @csrf
-            <!-- エラーメッセージ -->
-            {{-- <?php if(isset($_SESSION['errors'])): ?>
+            @if($errors->any())
                 <div class="error_area">
-                    <?php foreach($_SESSION['errors'] as $error): ?>
-                        <p><?php echo $error; ?></p>
-                    <?php endforeach; ?>
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
                 </div>
-                <?php unset($_SESSION['errors']); ?>
-            <?php endif; ?> --}}
+            @endif
             <table>
                 <tr>
                     <th>
                         <label for="email">メールアドレス</label>
                     </th>
                     <td>
-                        <input type="email" name="email" id="email" autocomplete="off">
+                        <input type="email" name="email" id="email" autocomplete="off" autofocus value="{{ old('email') }}">
                     </td>
                 </tr>
                 <tr>
