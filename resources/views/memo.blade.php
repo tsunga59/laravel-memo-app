@@ -23,7 +23,7 @@
                 <a href="{{ route('memo.select', ['id' => $memo->id]) }}" class="@if($selected_memo) {{ $selected_memo->id == $memo->id ? 'active' : '' }} @endif">
                     <p class="title">{{ $memo->title }}</p>
                     <span class="date">{{ date('Y/m/d H:i', strtotime($memo->updated_at)) }}</span>
-                    <span class="description">{{ mb_substr($memo->content, 0, 25).'…' }}</span>
+                    <span class="description">{{ mb_substr($memo->content, 0, 19).'…' }}</span>
                 </a>
             @endforeach
         </div>
