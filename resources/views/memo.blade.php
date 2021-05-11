@@ -31,10 +31,11 @@
     <div class="memo_right">
         @if($selected_memo)
         <form action="" method="post">
+            @csrf
             <input type="hidden" name="edit_id" value="{{ $selected_memo->id }}">
             <div class="top_area">
                 <div class="btn_area">
-                    <button type="submit" formaction=""><i class="fas fa-pen"></i></button>
+                    <button type="submit" formaction="{{ route('memo.update') }}"><i class="fas fa-pen"></i></button>
                     <button type="submit" formaction=""><i class="fas fa-trash"></i></button>
                 </div>
             </div>

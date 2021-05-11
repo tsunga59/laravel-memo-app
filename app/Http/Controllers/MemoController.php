@@ -25,23 +25,6 @@ class MemoController extends Controller
     }
 
     /**
-     * ログインユーザー名の取得
-     * 
-     * @return string
-     */
-    private function getLoginName()
-    {
-        $user = Auth::user();
-        if(mb_strlen($user->name) > 10) {
-            $name = mb_substr($user->name, 0, 10) . '…';
-        } else {
-            $name = $user->name;
-        }
-
-        return $name;
-    }
-
-    /**
      * メモの新規追加
      * 
      * @return RedirectResponse
@@ -59,6 +42,27 @@ class MemoController extends Controller
     }
 
     /**
+     * メモの更新
+     * 
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function update(Request $request)
+    {
+        $memo = Memo::find($request->edit_id);
+        $memo->title = $request->edit_title;
+        $memo->content = $request->edit_content;
+
+        if($memo->update()) {
+            session()->put('selected_memo', $memo);
+        } else {
+            session()->remove('selected_memo');
+        }
+
+        return redirect()->route('memo.index');
+    }
+
+    /**
      * メモの選択
      * 
      * @param Request $request
@@ -71,4 +75,21 @@ class MemoController extends Controller
 
         return redirect()->route('memo.index');
     }
+
+    /**
+     * ログインユーザー名の取得
+     * 
+     * @return string
+     */
+    private function getLoginName()
+    {
+        $user = Auth::user();
+        if(mb_strlen($user->name) > 10) {
+            $name = mb_substr($user->name, 0, 10) . '…';
+        } else {
+            $name = $user->name;
+        }
+
+        return $name;
+    }   
 }
