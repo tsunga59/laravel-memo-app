@@ -5,15 +5,15 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Memo;
 
-class DatabaseSeeder extends Seeder
+class MemoTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(MemoTableSeeder::class);
+        Memo::factory(5)->create();
     }
 }
