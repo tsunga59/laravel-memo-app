@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/memo', function() {
-        return view('memo');
-    })->name('memo.index');
+    Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
+    Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
 });
-
