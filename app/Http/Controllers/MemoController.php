@@ -32,11 +32,13 @@ class MemoController extends Controller
 
     public function create()
     {
-        Memo::create([
+        $memo = Memo::create([
             'user_id' => Auth::id(),
             'title' => '新規メモ',
             'content' => "",
         ]);
+
+        session()->put('selected_memo', $memo);
 
         return redirect()->route('memo.index');
     }
