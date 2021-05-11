@@ -11,7 +11,7 @@
         <div class="top_area">
             <p>{{ $name }}さん、ようこそ！</p>
             <div class="btn_area">
-                <a href="{{ route('login.index') }}"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="{{ route('memo.logout') }}"><i class="fas fa-sign-out-alt"></i></a>
                 <a href="{{ route('memo.create') }}"><i class="fas fa-plus"></i></a>
             </div>
         </div>
