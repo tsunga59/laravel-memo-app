@@ -25,11 +25,15 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
-    Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
-    Route::get('/memo/select', [MemoController::class, 'select'])->name('memo.select');
-    Route::post('/memo/update', [MemoController::class, 'update'])->name('memo.update');
-    Route::post('/memo/delete', [MemoController::class, 'delete'])->name('memo.delete');
+
+    Route::name('memo.')->group(function() {
+        Route::get('/memo', [MemoController::class, 'index'])->name('index');
+        Route::get('/memo/create', [MemoController::class, 'create'])->name('create');
+        Route::get('/memo/select', [MemoController::class, 'select'])->name('select');
+        Route::post('/memo/update', [MemoController::class, 'update'])->name('update');
+        Route::post('/memo/delete', [MemoController::class, 'delete'])->name('delete');
+    });
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('memo.logout');
+
 });
