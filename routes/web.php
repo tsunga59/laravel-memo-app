@@ -27,4 +27,5 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
     Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
+    Route::get('/memo/select', [MemoController::class, 'select'])->name('memo.select');
 });

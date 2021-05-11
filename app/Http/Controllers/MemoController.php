@@ -17,19 +17,34 @@ class MemoController extends Controller
     {
         $memos = Memo::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
 
-        // ログインユーザー名の取得
-        $name = Auth::user()->name;
-        if(mb_strlen($name) > 10) {
-            $name = mb_substr($name, 0, 10). "…";
+        return view('memo', [
+            'name' => $this->getLoginName(),
+            'memos' => $memos,
+            'selected_memo' => session()->get('selected_memo'),
+        ]);
+    }
+
+    /**
+     * ログインユーザー名の取得
+     * 
+     * @return string
+     */
+    private function getLoginName()
+    {
+        $user = Auth::user();
+        if(mb_strlen($user->name) > 10) {
+            $name = mb_substr($user->name, 0, 10) . '…';
+        } else {
+            $name = $user->name;
         }
-        
-        return view('memo', ['memos' => $memos, 'name' => $name]);
+
+        return $name;
     }
 
     /**
      * メモの新規追加
      * 
-     * @return view
+     * @return RedirectResponse
      */
 
     public function create()
@@ -39,6 +54,20 @@ class MemoController extends Controller
             'title' => '新規メモ',
             'content' => "",
         ]);
+
+        return redirect()->route('memo.index');
+    }
+
+    /**
+     * メモの選択
+     * 
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function select(Request $request)
+    {
+        $memo = Memo::find($request->id);
+        session()->put('selected_memo', $memo);
 
         return redirect()->route('memo.index');
     }
