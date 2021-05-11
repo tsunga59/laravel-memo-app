@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login.index');
+Route::post('/login', [LoginController::class, 'login'])->name('login.exec');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.exec');
 
-Route::get('/memo', function() {
-    return view('memo');
-})->name('memo.index');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/memo', [MemoController::class, 'index'])->name('memo.index');
+    Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
+});

@@ -9,23 +9,24 @@
 <section class="memo">
     <div class="memo_left">
         <div class="top_area">
-            <p>〇〇さん、ようこそ！</p>
+            <p>{{ $name }}さん、ようこそ！</p>
             <div class="btn_area">
                 <a href="{{ route('login.index') }}"><i class="fas fa-sign-out-alt"></i></a>
-                <a href=""><i class="fas fa-plus"></i></a>
+                <a href="{{ route('memo.create') }}"><i class="fas fa-plus"></i></a>
             </div>
         </div>
         <div class="memo_list">
-            <?php if(empty($memos)): ?>
+            @if($memos->count() === 0)
                 <p>メモがありません。</p>
-            <?php endif; ?>
-            {{-- <?php foreach($memos as $memo): ?>
-                <a href="./action/select.php?id=<?php echo $memo['id']; ?>" class="<?php echo $edit_id == $memo['id'] ? 'active' : ''; ?>">
-                    <p class="title"><?php echo $memo['title']; ?></p>
-                    <span class="date"><?php echo date('Y/m/d H:i', strtotime($memo['updated_at'])); ?></span>
-                    <span class="description"><?php echo mb_substr($memo['content'], 0, 25) . "…"; ?></span>
+            @endif
+            @foreach($memos as $memo)
+            {{-- <a href="./action/select.php?id=<?php echo $memo['id']; ?>" class="<?php echo $edit_id == $memo['id'] ? 'active' : ''; ?>"> --}}
+                <a href="" class="">
+                    <p class="title">{{ $memo->title }}</p>
+                    <span class="date">{{ date('Y/m/d H:i', strtotime($memo->updated_at)) }}</span>
+                    <span class="description">{{ mb_substr($memo->content, 0, 25).'…' }}</span>
                 </a>
-            <?php endforeach; ?> --}}
+            @endforeach
         </div>
     </div>
     <div class="memo_right">

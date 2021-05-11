@@ -4,24 +4,23 @@
 
 <section class="register">
     <div class="container">
-        <form action="{{ route('memo.index') }}" method="">
+        <form action="{{ route('register.exec') }}" method="post">
             @csrf
             <!-- エラーメッセージ -->
-            {{-- <?php if(isset($_SESSION['errors'])): ?>
+            @if($errors->any())
                 <div class="error_area">
-                    <?php foreach($_SESSION['errors'] as $error): ?>
-                        <p><?php echo $error; ?></p>
-                    <?php endforeach; ?>
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
                 </div>
-                <?php unset($_SESSION['errors']); ?>
-            <?php endif; ?> --}}
+            @endif
             <table>
                 <tr>
                     <th>
                         <label for="name">ユーザー名</label>
                     </th>
                     <td>
-                        <input type="text" name="name" id="name" placeholder="山田 太郎" autocomplete="off">
+                        <input type="text" name="name" id="name" placeholder="user name" autocomplete="off" autofocus value="{{ old('name') }}">
                     </td>
                 </tr>
                 <tr>
@@ -29,7 +28,7 @@
                         <label for="email">メールアドレス</label>
                     </th>
                     <td>
-                        <input type="email" name="email" id="email" placeholder="example@com" autocomplete="off">
+                        <input type="email" name="email" id="email" placeholder="example@com" autocomplete="off" value="{{ old('email') }}">
                     </td>
                 </tr>
                 <tr>
