@@ -36,7 +36,7 @@
             <div class="top_area">
                 <div class="btn_area">
                     <button type="submit" formaction="{{ route('memo.update') }}"><i class="fas fa-pen"></i></button>
-                    <button type="submit" formaction=""><i class="fas fa-trash"></i></button>
+                    <button type="submit" formaction="{{ route('memo.delete') }}" onclick="confirmDelete()"><i class="fas fa-trash"></i></button>
                 </div>
             </div>
             <div class="content_area">
@@ -51,3 +51,9 @@
 </section>
 
 @endsection
+
+<script>
+    function confirmDelete() {
+        window.alert('本当に削除してよろしいですか？');
+    }
+</script>
